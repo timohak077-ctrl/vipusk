@@ -1,0 +1,115 @@
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашнє завдання JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #dff6ff, #f0e6ff);
+            padding: 30px;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            color: #235789;
+        }
+
+        .task {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #0002;
+        }
+
+        h2 {
+            color: #168aad;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Домашнє завдання з JavaScript</h1>
+
+    <div class="task">
+        <h2>Задача 1. Робота з рядками</h2>
+        <p id="phrase"></p>
+    </div>
+
+    <div class="task">
+        <h2>Задача 2. Арифметичні операції</h2>
+        <p id="triangle"></p>
+    </div>
+
+    <div class="task">
+        <h2>Задача 3. Власний лінійний алгоритм</h2>
+        <p id="purchase"></p>
+    </div>
+
+    <script>
+        // Задача 1. Робота з рядками
+
+        let a = "Де";
+        let b = "є";
+        let c = "життя,";
+        let d = "там";
+        let e = "є й надія";
+
+        let phrase = a + " " + b + " " + c + " " + d + " " + e;
+
+        document.getElementById("phrase").textContent = phrase;
+
+
+        // Задача 2. Арифметичні операції
+
+        let sideA = 3;
+        let sideB = 4;
+        let sideC = 5;
+
+        let perimeter = sideA + sideB + sideC;
+        let area = sideA * sideB / 2;
+
+        document.getElementById("triangle").innerHTML =
+            "Сторони трикутника: " + sideA + ", " + sideB + ", " + sideC +
+            "<br>Периметр: " + perimeter +
+            "<br>Площа: " + area;
+
+
+        // Задача 3. Власний лінійний алгоритм
+        // Задача:
+        // Учень купив 3 зошити по 25 грн і 2 ручки по 18 грн.
+        // Необхідно визначити загальну вартість покупки.
+
+        let notebookPrice = 25;
+        let notebookCount = 3;
+
+        let penPrice = 18;
+        let penCount = 2;
+
+        let notebooksTotal = notebookPrice * notebookCount;
+        let pensTotal = penPrice * penCount;
+
+        let totalPrice = notebooksTotal + pensTotal;
+
+        document.getElementById("purchase").innerHTML =
+            "Зошити: " + notebookCount + " × " + notebookPrice +
+            " грн = " + notebooksTotal + " грн" +
+            "<br>Ручки: " + penCount + " × " + penPrice +
+            " грн = " + pensTotal + " грн" +
+            "<br><strong>Загальна вартість: " + totalPrice + " грн</strong>";
+    </script>
+
+</body>
+</html>
+```

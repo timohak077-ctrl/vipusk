@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Випуск 🌸</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #170d20, #32172e, #151629);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ШАПКА */
+header {
+    text-align: center;
+    padding: 35px 20px;
+    background: rgba(15, 8, 25, 0.65);
+    border-bottom: 1px solid rgba(255, 182, 213, 0.25);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+}
+
+header h1 {
+    font-size: clamp(38px, 7vw, 65px);
+    color: #ffb6d5;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px #ff65b5;
+    animation: appear 1.5s ease;
+}
+
+header p {
+    margin-top: 12px;
+    color: #f5d9eb;
+    font-size: 18px;
+    animation: appear 2s ease;
+}
+
+/* ПРИВЕТСТВИЕ */
+.welcome {
+    text-align: center;
+    margin: 35px 15px;
+    animation: appear 2s ease;
+}
+
+.welcome h2 {
+    font-size: clamp(25px, 4vw, 38px);
+    color: #ffd5e8;
+    text-shadow: 0 0 15px #d94b9d;
+}
+
+.welcome p {
+    margin-top: 12px;
+    color: #d9c7e1;
+    font-size: 17px;
+}
+
+/* ОСНОВНОЙ БЛОК */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 10px 35px 60px;
+    position: relative;
+    z-index: 1;
+}
+
+/* МОИ РАБОТЫ */
+.works {
+    width: 300px;
+    flex-shrink: 0;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 182, 213, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.12);
+    backdrop-filter: blur(8px);
+    animation: slideIn 1s ease;
+}
+
+.works h2 {
+    color: #ffb6d5;
+    font-size: 27px;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.work-link {
+    display: block;
+    text-decoration: none;
+    color: #fbeafa;
+    background: rgba(255, 182, 213, 0.08);
+    border: 1px solid rgba(255, 182, 213, 0.18);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.work-link:hover {
+    background: rgba(255, 105, 180, 0.2);
+    border-color: #ff9bc8;
+    transform: translateX(7px);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+}
+
+.work-link span {
+    display: block;
+    color: #cdb9d5;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.content {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    padding: 35px 20px;
+    animation: appear 2s ease;
+}
+
+.content h2 {
+    color: #ffcee4;
+    font-size: clamp(24px, 4vw, 36px);
+    margin-bottom: 20px;
+}
+
+.content p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    color: #e0d2e9;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.flower {
+    font-size: 80px;
+    margin: 25px 0;
+    animation: sway 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px #ff8fbe);
+}
+
+.quote {
+    color: #ffb6d5;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+/* ПАДАЮЩИЕ ЛЕПЕСТКИ */
+#petals {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.petal {
+    position: absolute;
+    top: -40px;
+    width: 19px;
+    height: 25px;
+    border-radius: 80% 10% 70% 20%;
+    background: linear-gradient(135deg, #fff0f7, #ff9ecb, #f15d9d);
+    opacity: 0.85;
+    box-shadow: 0 0 8px rgba(255, 160, 205, 0.3);
+    pointer-events: auto;
+    cursor: pointer;
+    animation: fall linear forwards;
+    transform-origin: center;
+}
+
+.petal:hover {
+    background: #fff2a8;
+    box-shadow: 0 0 20px #ffe48a;
+    filter: brightness(1.3);
+}
+
+/* СООБЩЕНИЕ ПРИ НАВЕДЕНИИ */
+#message {
+    position: fixed;
+    z-index: 20;
+    display: none;
+    pointer-events: none;
+    background: rgba(35, 15, 39, 0.95);
+    color: #ffe2f0;
+    border: 1px solid #ff9bc8;
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+    animation: appear 0.25s ease;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 25px 15px;
+    color: #bba5c5;
+    background: rgba(15, 8, 25, 0.65);
+    border-top: 1px solid rgba(255, 182, 213, 0.2);
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -30px, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate3d(35px, 25vh, 0) rotate(140deg);
+    }
+    50% {
+        transform: translate3d(-25px, 50vh, 0) rotate(260deg);
+    }
+    75% {
+        transform: translate3d(30px, 75vh, 0) rotate(390deg);
+    }
+    100% {
+        transform: translate3d(-20px, 110vh, 0) rotate(540deg);
+    }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+/* ТЕЛЕФОНЫ */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        padding: 10px 15px 40px;
+    }
+
+    .works {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        padding: 20px 5px;
+    }
+
+    header h1 {
+        letter-spacing: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .petal {
+        animation-duration: 18s !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="petals"></div>
+<div id="message">🌸 Молодец! Ты нашёл лепесток! 🌸</div>
+
+<header>
+    <h1>🌸 ВИПУСК 🌸</h1>
+    <p>Моменти, які залишаться з нами назавжди</p>
+</header>
+
+<section class="welcome">
+    <h2>Добро пожаловать! ✨</h2>
+    <p>Рад видеть тебя на моей выпускной работе.</p>
+</section>
+
+<main class="container">
+
+    <aside class="works">
+        <h2>📚 Мої роботи</h2>
+
+        <!-- ЗАМЕНИ ССЫЛКИ НА СВОИ ПРОЕКТЫ -->
+
+        <a class="work-link" href="js1.html" target="_blank" rel="noopener noreferrer">
+             js1
+        </a>
+
+        <a class="work-link" href="js2.html" target="_blank" rel="noopener noreferrer">
+            js2
+        </a>
+
+        <a class="work-link" href="js3.html" target="_blank" rel="noopener noreferrer">
+            js3
+        </a>
+
+        <a class="work-link" href="homrwork.html" target="_blank" rel="noopener noreferrer">
+            homrwork
+        </a>
+
+    </aside>
+
+    <section class="content">
+        <h2>🌸 Моя історія та творчість</h2>
+
+        <div class="flower">🌸</div>
+
+        <p>
+            Кожна робота — це новий досвід, нові знання
+            та ще один крок уперед.
+        </p>
+
+        <p>
+            Цей сайт створений як частина моєї випускної роботи.
+            Тут зібрані мої проєкти, ідеї та маленькі досягнення.
+        </p>
+
+        <div class="quote">
+            «Кожен кінець — це початок чогось нового» ✨
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    🌸 Випускна робота · Створено з ❤️ та JavaScript 🌸
+</footer>
+
+<script>
+const petalsContainer = document.getElementById("petals");
+const message = document.getElementById("message");
+
+let petalCount = 0;
+const maxPetals = 32;
+
+function createPetal() {
+    if (petalCount >= maxPetals) return;
+
+    const petal = document.createElement("div");
+    petal.className = "petal";
+
+    const size = 10 + Math.random() * 15;
+    const duration = 7 + Math.random() * 9;
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.width = size + "px";
+    petal.style.height = size * 1.3 + "px";
+    petal.style.animationDuration = duration + "s";
+    petal.style.animationDelay = (Math.random() * 2) + "s";
+
+    // Секретное сообщение при наведении
+    petal.addEventListener("mouseenter", () => {
+        message.style.display = "block";
+        message.style.left = Math.min(
+            window.innerWidth - 245,
+            Math.max(8, petal.getBoundingClientRect().left)
+        ) + "px";
+        message.style.top = Math.min(
+            window.innerHeight - 65,
+            Math.max(8, petal.getBoundingClientRect().top + 25)
+        ) + "px";
+    });
+
+    petal.addEventListener("mouseleave", () => {
+        message.style.display = "none";
+    });
+
+    // На телефоне можно нажать на лепесток
+    petal.addEventListener("click", () => {
+        message.textContent = "🌸 Молодец! Ты нашёл лепесток! 🌸";
+        message.style.display = "block";
+        message.style.left = "50%";
+        message.style.top = "45%";
+        message.style.transform = "translate(-50%, -50%)";
+
+        setTimeout(() => {
+            message.style.display = "none";
+            message.style.transform = "";
+        }, 1800);
+    });
+
+    petalsContainer.appendChild(petal);
+    petalCount++;
+
+    petal.addEventListener("animationend", () => {
+        petal.remove();
+        petalCount--;
+    });
+}
+
+// Постоянно появляются новые лепестки
+setInterval(createPetal, 350);
+
+// Создаём первые лепестки
+for (let i = 0; i < 15; i++) {
+    setTimeout(createPetal, i * 180);
+}
+</script>
+
+</body>
+</html

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                120deg,
+                red,
+                orange,
+                yellow,
+                green,
+                cyan,
+                blue,
+                purple,
+                red
+            );
+
+            background-size: 400% 400%;
+            animation: rainbow 10s ease infinite;
+        }
+
+        h1 {
+            color: white;
+            font-size: 50px;
+            text-shadow: 3px 3px 10px black;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+ <h1>Ми вивчаємо JavaScript</h1>
+<script> 
+alert("Hello JavaScript!");
+     alert("Привіт JavaScript");
+    alert("Привіт світ");
+    // Команда нище повыдомляэ про помилку 
+    /* Приклад з трьома повідомленнями
+    Це - багаторядковий коментар. */
+    
+    alert("Увага тут буде помилка!");
+    [8, 3, 5].forEach(alert); // повідомлення виводять цифри окремо*/
+     
+   alert(8 +
+10
++12);
+ </script>
+ </body>
+</html> 

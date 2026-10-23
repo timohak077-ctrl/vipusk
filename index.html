@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Випуск 🌸</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#180e26,#492344,#17172e);min-height:100vh}
+header{text-align:center;padding:35px 15px;background:#170d20bb;border-bottom:1px solid #ffadd755}
+h1{font-size:48px;color:#ffb6d5;text-shadow:0 0 20px #ff65b5}
+header p{color:#f5d9eb}
+.welcome{text-align:center;padding:25px 10px}
+.welcome h2{color:#ffd5e8}
+.container{display:flex;gap:30px;padding:15px 30px 50px}
+.works{width:300px;flex-shrink:0;padding:22px;background:#ffffff10;border:1px solid #ffb6d555;border-radius:18px}
+.works h2{text-align:center;color:#ffb6d5}
+.work{display:block;text-decoration:none;color:white;background:#ffb6d514;border:1px solid #ffb6d533;border-radius:10px;padding:14px;margin:12px 0;transition:.25s}
+.work:hover{background:#ff69b444;transform:translateX(5px)}
+.work small{display:block;color:#e5cde5;margin-top:6px}
+.content{flex:1;text-align:center;padding:30px}
+.content h2{color:#ffcee4}
+.content p{line-height:1.8;color:#e0d2e9}
+.flower{font-size:80px}
+.quote{color:#ffb6d5;font-style:italic;margin-top:30px}
+footer{text-align:center;padding:25px;color:#cdb9d5;background:#170d20bb}
+#petals{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.petal{position:absolute;top:-30px;width:16px;height:22px;border-radius:80% 10% 70% 20%;background:linear-gradient(135deg,#fff0f7,#ff9ecb,#f15d9d);pointer-events:auto;cursor:pointer;animation:fall linear forwards}
+#message{display:none;position:fixed;z-index:10;pointer-events:none;background:#32172e;color:#ffe2f0;border:1px solid #ff9bc8;border-radius:12px;padding:12px;font-weight:bold}
+@keyframes fall{to{transform:translate(40px,110vh) rotate(650deg)}}
+@media(max-width:700px){.container{flex-direction:column;padding:10px}.works{width:100%}.content{padding:20px 5px}h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div id="petals"></div>
+<div id="message">🌸 Молодець! Ти знайшов пелюстку! 🌸</div>
+
+<header>
+<h1>🌸 ВИПУСК 🌸</h1>
+<p>Моменти, які залишаться з нами назавжди</p>
+</header>
+
+<section class="welcome">
+<h2>Добро пожаловать! ✨</h2>
+<p>Рад видеть тебя на моей выпускной работе.</p>
+</section>
+
+<main class="container">
+<aside class="works">
+<h2>📚 Мої роботи</h2>
+
+<a class="work" href="java%20script/index.html">💻 Моя вебсторінка<small>Моя робота HTML</small></a>
+<a class="work" href="java%20script/homrwork.html">📝 Домашня робота<small>Моя робота</small></a>
+<a class="work" href="java%20script/js1.html">⚡ JavaScript — робота 1<small>Мій проєкт</small></a>
+<a class="work" href="java%20script/js2.html">⚡ JavaScript — робота 2<small>Мій проєкт</small></a>
+<a class="work" href="java%20script/js3.html">⚡ JavaScript — робота 3<small>Мій проєкт</small></a>
+
+</aside>
+
+<section class="content">
+<h2>🌸 Моя історія та творчість</h2>
+<div class="flower">🌸</div>
+<p>Кожна робота — це новий досвід, нові знання та ще один крок уперед.</p>
+<p>Тут зібрані мої проєкти, ідеї та маленькі досягнення.</p>
+<div class="quote">«Кожен кінець — це початок чогось нового» ✨</div>
+</section>
+</main>
+
+<footer>🌸 Випускна робота · Створено з ❤️ та JavaScript 🌸</footer>
+
+<script>
+const box=document.getElementById("petals");
+const message=document.getElementById("message");
+function createPetal(){
+ const p=document.createElement("div");
+ p.className="petal";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration=(7+Math.random()*8)+"s";
+ p.addEventListener("mouseenter",()=>{
+   const r=p.getBoundingClientRect();
+   message.style.display="block";
+   message.style.left=Math.min(innerWidth-245,Math.max(5,r.left))+"px";
+   message.style.top=Math.min(innerHeight-60,Math.max(5,r.top+20))+"px";
+ });
+ p.addEventListener("mouseleave",()=>message.style.display="none");
+ p.addEventListener("click",()=>{
+   message.style.display="block";
+   message.style.left="50%";
+   message.style.top="45%";
+   message.style.transform="translate(-50%,-50%)";
+   setTimeout(()=>{message.style.display="none";message.style.transform=""},1800);
+ });
+ p.addEventListener("animationend",()=>p.remove());
+ box.appendChild(p);
+}
+setInterval(createPetal,350);
+for(let i=0;i<15;i++)setTimeout(createPetal,i*180);
+</script>
+</body>
+</html>
